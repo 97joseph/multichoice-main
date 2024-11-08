@@ -85,7 +85,7 @@
                             <p class="mt-2 text-2xl font-semibold text-gray-900">{{ $tokens->where('status.name', 'Inactive')->count() }}</p>
                         </div>
                         <div class="p-4 bg-white rounded-lg shadow">
-                            <h3 class="text-lg font-medium text-gray-700">Pending Tickets</h3>
+                            <h3 class="text-lg font-medium text-gray-700">Active Tickets</h3>
                             <p class="mt-2 text-2xl font-semibold text-gray-900">{{ $tokens->where('status.name', 'Active')->count() }}</p>
                         </div>
                         <div class="p-4 bg-white rounded-lg shadow">
@@ -93,6 +93,49 @@
                             <p class="mt-2 text-2xl font-semibold text-gray-900">{{ $tokens->where('status.name', 'Completed')->count() }}</p>
                         </div>
                     </div>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <canvas id="analyticsChart" width="400" height="200"></canvas>
+                <script>
+                    var ctx = document.getElementById('analyticsChart').getContext('2d');
+                    var analyticsChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Total Tickets', 'Pending Tickets', 'Inactive Tickets', 'Active Tickets', 'Completed Tickets'],
+                            datasets: [{
+                                label: 'Tickets',
+                                data: [
+                                    {{ $tokens->count() }},
+                                    {{ $tokens->where('status.name', 'Pending')->count() }},
+                                    {{ $tokens->where('status.name', 'Inactive')->count() }},
+                                    {{ $tokens->where('status.name', 'Active')->count() }},
+                                    {{ $tokens->where('status.name', 'Completed')->count() }}
+                                ],
+                                backgroundColor: [
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(153, 102, 255, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                </script>
                 </div>
                 </div>
             </div>
