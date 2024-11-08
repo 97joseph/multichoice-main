@@ -9,6 +9,7 @@
         </div>
         <div class="w-2/3 overflow-x-auto">
             <div class="min-w-full inline-block align-middle">
+                
                 <div class="overflow-hidden border rounded-lg border-gray-300">
                     @include('components.alerts')
                     <table class="min-w-full rounded-xl">
@@ -60,6 +61,8 @@
                 </div>
             </div>
         </div>
+
+        
     </div>
     <footer>
         <p class="text-center bg-blue-900 text-white py-1 rounded-lg">Enjoy super sport 3 at only 90ksh!!!</p>
