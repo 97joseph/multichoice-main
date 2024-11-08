@@ -23,6 +23,19 @@
                     </div>
                 </div>
             </div>
+            <div class="mt-6">
+                <label for="textInput" class="block text-sm font-medium text-gray-700">Enter Text:</label>
+                <input type="text" id="textInput" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                <button id="speakButton" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md">Speak</button>
+            </div>
+
+            <script>
+                document.getElementById('speakButton').addEventListener('click', function () {
+                    var text = document.getElementById('textInput').value;
+                    var speech = new SpeechSynthesisUtterance(text);
+                    window.speechSynthesis.speak(speech);
+                });
+            </script>
 
             <script>
                 document.addEventListener('DOMContentLoaded', function () {

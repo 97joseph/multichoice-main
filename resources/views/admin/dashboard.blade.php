@@ -28,7 +28,18 @@
                             @foreach($tokens as $item)
                                 <tr>
                                     <td class="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">{{ $item->id ?? '' }}</td>
-                                    <td class="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">{{ $item->token_number ?? '' }}</td>
+                                    <td class="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
+                                        <button class="text-blue-600 hover:underline" onclick="speakText('{{ $item->token_number ?? '' }}')">
+                                            {{ $item->token_number ?? '' }}
+                                        </button>
+                                        <script>
+                                            function speakText(text) {
+                                                var speech = new SpeechSynthesisUtterance(text + ' Go to desk 1 or 2');
+                                                window.speechSynthesis.speak(speech);
+                                            }
+                                        </script>
+                                    </td>
+                                    </td>
                                     <td class="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">{{ $item->telephone ?? '' }}</td>
                                     <td class="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">{{ $item->service->name ?? '' }}</td>
                                     <td class="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">{{ $item->user->name ?? '' }}</td>
