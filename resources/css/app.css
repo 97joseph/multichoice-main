@@ -1,0 +1,31 @@
+@import "@fortawesome/fontawesome-pro/css/all.min.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+    font-family: "Roboto";
+    src: url('../../public/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Roboto";
+    src: url('../../public/fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+.bg-afrisol-blue{
+    background-color: #0f6bc0;
+}
+.bg-afrisol-orange{
+    background-color: #f15a24;
+}
+.text-afrisol-blue{
+    color: #0f6bc0;
+}
+.text-afrisol-orange{
+    color: #f15a24;
+}
