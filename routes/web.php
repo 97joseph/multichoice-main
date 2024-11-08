@@ -62,7 +62,7 @@ Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 
 
-
+Route::get('/generate-users-report', [ReportController::class, 'generateUsersReport']);
 Route::get('/dashboard', [TicketTokenController::class, 'listTokens'])->name('dashboard');
 Route::get('/services', [TicketTokenController::class, 'index'])->name('services');
 Route::get('/', [TicketTokenController::class, 'index'])->name('home');

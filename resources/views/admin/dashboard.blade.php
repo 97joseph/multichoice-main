@@ -34,7 +34,7 @@
                                         </button>
                                         <script>
                                             function speakText(text) {
-                                                var speech = new SpeechSynthesisUtterance(text + ' Go to desk 1 or 2');
+                                                var speech = new SpeechSynthesisUtterance(text + 'Please Proceed to desk 1 or 2 to be served');
                                                 window.speechSynthesis.speak(speech);
                                             }
                                         </script>
@@ -69,6 +69,31 @@
                             @endforeach
                         </tbody>
                     </table>
+                <div class="mt-5">
+                    <h2 class="text-xl font-semibold text-gray-900">Analytics</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3">
+                        <div class="p-4 bg-white rounded-lg shadow">
+                            <h3 class="text-lg font-medium text-gray-700">Total Tickets</h3>
+                            <p class="mt-2 text-2xl font-semibold text-gray-900">{{ $tokens->count() }}</p>
+                        </div>
+                        <div class="p-4 bg-white rounded-lg shadow">
+                            <h3 class="text-lg font-medium text-gray-700">Pending Tickets</h3>
+                            <p class="mt-2 text-2xl font-semibold text-gray-900">{{ $tokens->where('status.name', 'Pending')->count() }}</p>
+                        </div>
+                        <div class="p-4 bg-white rounded-lg shadow">
+                            <h3 class="text-lg font-medium text-gray-700">Pending Tickets</h3>
+                            <p class="mt-2 text-2xl font-semibold text-gray-900">{{ $tokens->where('status.name', 'Inactive')->count() }}</p>
+                        </div>
+                        <div class="p-4 bg-white rounded-lg shadow">
+                            <h3 class="text-lg font-medium text-gray-700">Pending Tickets</h3>
+                            <p class="mt-2 text-2xl font-semibold text-gray-900">{{ $tokens->where('status.name', 'Active')->count() }}</p>
+                        </div>
+                        <div class="p-4 bg-white rounded-lg shadow">
+                            <h3 class="text-lg font-medium text-gray-700">Completed Tickets</h3>
+                            <p class="mt-2 text-2xl font-semibold text-gray-900">{{ $tokens->where('status.name', 'Completed')->count() }}</p>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
