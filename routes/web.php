@@ -56,6 +56,8 @@ Route::get('/report', function () {
     return view('admin.report-layout');
 });
 
+
+
 Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 

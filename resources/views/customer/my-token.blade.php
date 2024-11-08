@@ -12,9 +12,53 @@
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
             </div>
         </a>
+        <div class="mt-4 flex justify-left">
+        <button id="download-pdf" class="px-4 py-2 bg-blue-900 text-white rounded">Download as PDF</button>
+        <button id="download-excel" class="ml-4 px-4 py-2 bg-blue-900 text-white rounded">Download as Excel</button>
     </div>
-
+    </div>
+    
 @endsection
+
+@section('js-scripts')
+    <script type="module">
+        $(document).ready(function() {
+            $('#download-pdf').click(function() {
+                const element = document.querySelector('.container');
+                html2pdf(element, {
+                    margin: 1,
+                    filename: 'my-token.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2 },
+                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                });
+            });
+
+            $('#download-excel').click(function() {
+                const table = document.createElement('table');
+                const row = table.insertRow();
+                const cell1 = row.insertCell(0);
+                const cell2 = row.insertCell(1);
+                const cell3 = row.insertCell(2);
+
+                cell1.innerHTML = 'Owner';
+                cell2.innerHTML = 'Ticket No';
+                cell3.innerHTML = 'Description';
+
+                const dataRow = table.insertRow();
+                dataRow.insertCell(0).innerHTML = '{{ $token['telephone'] ?? '' }}';
+                dataRow.insertCell(1).innerHTML = '{{ $token['token_number'] ?? '' }}';
+                dataRow.insertCell(2).innerHTML = 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.';
+
+                const wb = XLSX.utils.table_to_book(table);
+                XLSX.writeFile(wb, 'my-token.xlsx');
+            });
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+@endsection
+
 @section('js-scripts')
     <script type="module">
         $(document).ready(function() {

@@ -47,9 +47,25 @@
                                     <path d="M5.02623 10.2611L12.7387 17.9736C14.4091 19.6439 17.1173 19.6439 18.7877 17.9736C19.4559 17.3054 19.4559 16.2221 18.7877 15.554L16.6454 13.4116C16.1582 12.9244 15.3683 12.9244 14.8811 13.4116C14.3939 13.8988 13.604 13.8988 13.1168 13.4116L9.23534 9.53015C8.74814 9.04295 8.74814 8.25305 9.23534 7.76585C9.72253 7.27865 9.72253 6.48875 9.23534 6.00155L7.44584 4.21205C6.77768 3.5439 5.69439 3.5439 5.02623 4.21205C3.35584 5.88244 3.35584 8.59067 5.02623 10.2611Z" stroke="" stroke-width="1.6" />
                                 </svg>
                             </div>
-                            <input type="text" id="telephone" name="telephone" class="block w-full h-11 pr-5 pl-12 py-2.5 text-base font-normal shadow-xs text-gray-900 bg-transparent border border-gray-300 rounded-full placeholder-gray-400 focus:outline-none" placeholder="Enter Phone No">
-                        </div>
+                            <select id="countryCode" name="countryCode" class="absolute inset-y-0 left-0 flex items-center pl-3 bg-transparent border-none text-gray-500 focus:outline-none">
+                                <option value="+1">+1 (US)</option>
+                                <option value="+44">+44 (UK)</option>
+                                <option value="+91">+91 (IN)</option>
+                                <!-- Add more country codes as needed -->
+                            </select>
+                            <input type="text" id="telephone" name="telephone" class="block w-full h-11 pr-5 pl-24 py-2.5 text-base font-normal shadow-xs text-gray-900 bg-transparent border border-gray-300 rounded-full placeholder-gray-400 focus:outline-none" placeholder="Enter Phone No">
+                            </div>
+                            <script>
+                                document.getElementById('stepperForm').addEventListener('submit', function(event) {
+                                    const countryCode = document.getElementById('countryCode').value;
+                                    const telephone = document.getElementById('telephone').value;
+                                    const fullTelephone = countryCode + telephone;
+                                    document.getElementById('telephone').value = fullTelephone;
+                                });
+                            </script>
                     </div>
+
+                    
                 </div>
                 <button type="button" class="next bg-blue-600 text-white px-4 py-2 rounded">Proceed</button>
             </div>

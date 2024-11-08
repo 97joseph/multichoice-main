@@ -78,5 +78,6 @@
             </script>
             </div>
         </div>
+        
     </div>
 @endsection
